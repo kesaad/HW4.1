@@ -10,5 +10,6 @@ namespace Abc.Domain.Quantity
         Task Delete(string id);
         Task Add(T obj);
         Task Update(T obj);
+        string SortOrder { get; set; }
     }
 }
