@@ -14,6 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abc.Pages", "Pages\Abc.Page
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abc.Soft", "Soft\Abc.Soft.csproj", "{3BACFA51-FCB8-4835-85A8-402A607C2DA0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Time recording log", "Time recording log", "{08C1EC6D-893F-44B3-A123-526B0B387C56}"
+	ProjectSection(SolutionItems) = preProject
+		Time recording log.xlsx = Time recording log.xlsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

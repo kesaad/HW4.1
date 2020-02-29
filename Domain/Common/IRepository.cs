@@ -12,5 +12,8 @@ namespace Abc.Domain.Quantity
         Task Update(T obj);
         string SortOrder { get; set; }
         string SearchString { get; set; }
+        int PageIndex { get; set; }
+        bool HasNextPage { get; set; }
+        bool HasPreviousPage { get; set; }
     }
 }
