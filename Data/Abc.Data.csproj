@@ -21,5 +21,6 @@
   <ItemGroup>
     <Folder Include="Quantity\" />
     <Folder Include="Common\" />
+    <Folder Include="Docs\" />
   </ItemGroup>
 </Project>
