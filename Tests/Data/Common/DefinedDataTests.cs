@@ -18,7 +18,7 @@ namespace Tests
         [TestMethod]
         public void DefinitionTest()
         {
-            isNullableProperty(() => obj.Definition, x => obj.Definition = x, () => "aaaaa");
+            isNullableProperty(() => obj.Definition, x => obj.Definition = x);
         }
     }
 }
