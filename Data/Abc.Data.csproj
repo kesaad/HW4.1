@@ -22,5 +22,9 @@
     <Folder Include="Quantity\" />
     <Folder Include="Common\" />
     <Folder Include="Docs\" />
+    <Folder Include="Money\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Money\CurrencyData.cs" />
   </ItemGroup>
 </Project>
