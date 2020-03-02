@@ -1,19 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abc.Domain.Quantity;
 
-namespace Abc.Domain.Quantity
+namespace Abc.Domain
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : ICrudMethods<T>, IPaging, ISorting, ISearching
     {
-        Task<List<T>> Get();
-        Task<T> Get(string id);
-        Task Delete(string id);
-        Task Add(T obj);
-        Task Update(T obj);
-        string SortOrder { get; set; }
-        string SearchString { get; set; }
-        int PageIndex { get; set; }
-        bool HasNextPage { get; set; }
-        bool HasPreviousPage { get; set; }
     }
 }

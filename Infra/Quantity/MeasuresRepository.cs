@@ -6,16 +6,11 @@ using Abc.Domain.Quantity;
 using Microsoft.EntityFrameworkCore;
 namespace Abc.Infra.Quantity
 {
-    public class MeasuresRepository : IMeasuresRepository
+    public class MeasuresRepository : PaginatedRepository<Measure>, IMeasuresRepository
     {
         protected internal QuantityDbContext db;
 
-        public string SortOrder { get; set; }
-        public string SearchString { get; set; }
         public int PageSize { get; set; } = 1;
-        public int PageIndex { get; set; } = 1;
-        public bool HasNextPage { get; set; }
-        public bool HasPreviousPage { get; set; }
 
         public MeasuresRepository(QuantityDbContext c)
         {
