@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Abc.Infra
 {
     public abstract class PaginatedRepository<TDomain, TData> : FilteredRepository<TDomain, TData>, IPaging
-        where TData : UniqueEntityData, new() where TDomain : Entity<TData>, new()
+        where TData : PeriodData, new() where TDomain : Entity<TData>, new()
     {
         protected PaginatedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
 

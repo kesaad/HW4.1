@@ -9,7 +9,7 @@ using Abc.Infra;
 namespace Abc.Infra
 {
     public abstract class BaseRepository<TDomain, TData> : ICrudMethods<TDomain>
-        where TData : UniqueEntityData, new() where TDomain : Entity<TData>, new()
+        where TData : PeriodData, new() where TDomain : Entity<TData>, new()
     {
         protected internal DbContext db;
         protected DbSet<TData> dbSet;
@@ -48,10 +48,12 @@ namespace Abc.Infra
         {
             if (id is null) return new TDomain();
 
-            var d = await dbSet.FirstOrDefaultAsync(m => m.Id == id);
-            var obj = new TDomain { Data = d };
+            var d = await getData(id);
+            var obj = new TDomain { Data = d};
             return obj;
         }
+
+        protected abstract Task<TData> getData(string id);
 
         public async Task Update(TDomain obj)
         {

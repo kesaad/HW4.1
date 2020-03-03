@@ -58,5 +58,10 @@ namespace Abc.Infra.Quantity
 
             return measures.AsNoTracking();
         }
+
+        protected override async Task<MeasureData> getData(string id)
+        {
+            return await dbSet.FirstOrDefaultAsync(m => m.Id == id);
+        }
     }
 }
