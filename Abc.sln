@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abc.Soft", "Soft\Abc.Soft.c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Time recording log", "Time recording log", "{08C1EC6D-893F-44B3-A123-526B0B387C56}"
 	ProjectSection(SolutionItems) = preProject
-		Time recording log.xlsx = Time recording log.xlsx
+		..\..\..\Desktop\Time recording log.xlsx = ..\..\..\Desktop\Time recording log.xlsx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C659FD58-9162-465C-AC50-61480012682A}"
