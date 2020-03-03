@@ -6,7 +6,7 @@ using Abc.Domain.Quantity;
 using Microsoft.EntityFrameworkCore;
 namespace Abc.Infra.Quantity
 {
-    public class MeasuresRepository : PaginatedRepository<Measure, MeasureData>, IMeasuresRepository
+    public class MeasuresRepository : UniqueEntityRepository<Measure, MeasureData>, IMeasuresRepository
     {
         public MeasuresRepository(QuantityDbContext c) : base(c, c.Measures) { }
 
@@ -57,11 +57,6 @@ namespace Abc.Infra.Quantity
             }
 
             return measures.AsNoTracking();
-        }
-
-        protected override async Task<MeasureData> getData(string id)
-        {
-            return await dbSet.FirstOrDefaultAsync(m => m.Id == id);
         }
     }
 }
