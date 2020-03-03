@@ -9,14 +9,22 @@ namespace Abc.Pages.Quantity
     {
         protected internal readonly IMeasuresRepository db;
 
-        protected internal MeasuresPage(IMeasuresRepository r) => db = r;
+        protected internal MeasuresPage(IMeasuresRepository r)
+        {
+            db = r;
+            PageTitle = "Measures";
+        }
 
         [BindProperty]
         public MeasureView Item { get; set; }
 
         public IList<MeasureView> Items { get; set; }
 
-        public string PageTitle { get; set; } = "Mingi pealkiri";
+        public string ItemId => Item.Id;
+
+        public string PageTitle { get; set; }
+
+        public string PageSubTitle { get; set; }
 
         public string CurrentSort { get; set; } = "Current Sort";
 

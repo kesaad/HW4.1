@@ -26,13 +26,13 @@
                 @Html.DisplayNameFor(model => model.Items[0].Definition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].ValidTo)
-            </th>
-            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
                 </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].ValidTo)
             </th>
             <th></th>
         </tr>
