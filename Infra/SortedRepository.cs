@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Abc.Data.Common;
 using Abc.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra
 {
-    public class SortedRepository<T> : BaseRepository<T>, ISorting
+    public abstract class SortedRepository<TDomain, TData> : BaseRepository<TDomain, TData>, ISorting
+        where TData : UniqueEntityData, new() where TDomain : Entity<TData>, new()
     {
+        protected SortedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+
         public string SortOrder { get; set; }
     }
 }

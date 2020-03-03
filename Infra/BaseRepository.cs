@@ -1,35 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abc.Data.Common;
 using Abc.Domain;
+using Microsoft.EntityFrameworkCore;
+using Abc.Infra;
 
 namespace Abc.Infra
 {
-    public class BaseRepository<T> : ICrudMethods<T>
+    public abstract class BaseRepository<TDomain, TData> : ICrudMethods<TDomain>
+        where TData : UniqueEntityData, new() where TDomain : Entity<TData>, new()
     {
-        public Task Add(T obj)
+        protected internal DbContext db;
+        protected DbSet<TData> dbSet;
+
+        protected BaseRepository(DbContext c, DbSet<TData> s)
+        {
+            db = c;
+            dbSet = s;
+        }
+
+        public virtual async Task<List<TDomain>> Get()
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(string id)
+        public async Task Add(TDomain obj)
         {
-            throw new NotImplementedException();
+            if (obj?.Data is null) return;
+            dbSet.Add(obj.Data);
+            await db.SaveChangesAsync();
         }
 
-        public Task<List<T>> Get()
+        public async Task Delete(string id)
         {
-            throw new NotImplementedException();
+            if (id is null) return;
+
+            var v = await dbSet.FindAsync(id);
+
+            if (v is null) return;
+
+            dbSet.Remove(v);
+            await db.SaveChangesAsync();
         }
 
-        public Task<T> Get(string id)
+        public async Task<TDomain> Get(string id)
         {
-            throw new NotImplementedException();
+            if (id is null) return new TDomain();
+
+            var d = await dbSet.FirstOrDefaultAsync(m => m.Id == id);
+            var obj = new TDomain { Data = d };
+            return obj;
         }
 
-        public Task Update(T obj)
+        public async Task Update(TDomain obj)
         {
-            throw new NotImplementedException();
+            db.Attach(obj.Data).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //if (!MeasureViewExists(MeasureView.Id))
+                //{
+                //    return NotFound():
+                //}
+                //else
+                //{
+                // throw;
+                //}
+            }
         }
     }
 }
