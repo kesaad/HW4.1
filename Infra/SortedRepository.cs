@@ -5,13 +5,6 @@ using System.Reflection;
 using Abc.Data.Common;
 using Abc.Domain;
 using Microsoft.EntityFrameworkCore;
-//TODO
-//case "ValidFrom":
-//measures = measures.OrderBy(s => s.ValidFrom);
-//break;
-//case "ValidFrom_desc":
-//measures = measures.OrderByDescending(s => s.ValidFrom);
-//break;
 
 namespace Abc.Infra
 {
@@ -26,15 +19,14 @@ namespace Abc.Infra
         protected internal IQueryable<TData> setSorting(IQueryable<TData> data)
         {
             var expression = createExpression();
-            if (expression is null) return data;
-            return setOrderBy(data, expression);
+            var r =  expression is null ? data : setOrderBy(data, expression);
+            return r;
         }
 
         internal Expression<Func<TData, object>> createExpression()
         {
             var property = findProperty();
-            if (property is null) return null;
-            return lambdaExpression(property);
+            return property is null ? null : lambdaExpression(property);
         }
 
         internal Expression<Func<TData, object>> lambdaExpression(PropertyInfo p)
