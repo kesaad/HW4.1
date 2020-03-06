@@ -10,21 +10,7 @@ namespace Abc.Infra.Quantity
     {
         public MeasuresRepository(QuantityDbContext c) : base(c, c.Measures) { }
 
-        public override async Task<List<Measure>> Get()
-        {
-            var list = await createPaged(createFiltered(createSorted()));
-            HasNextPage = list.HasNextPage;
-            HasPreviousPage = list.HasPreviousPage;
-            return list.Select(e => new Measure(e)).ToList();
-        }
-
-        private async Task<PaginatedList<MeasureData>> createPaged(IQueryable<MeasureData> dataSet)
-        {
-            return await PaginatedList<MeasureData>.CreateAsync(
-                dataSet, PageIndex, PageSize);
-        }
-
-        private IQueryable<MeasureData> createFiltered(IQueryable<MeasureData> set)
+        protected internal override IQueryable<MeasureData> addFiltering(IQueryable<MeasureData> set)
         {
             if (string.IsNullOrEmpty(SearchString)) return set;
             return set.Where(s => s.Name.Contains(SearchString)
@@ -36,12 +22,6 @@ namespace Abc.Infra.Quantity
             );
         }
 
-        private IQueryable<MeasureData> createSorted()
-        {
-            IQueryable<MeasureData> measures = from s in dbSet select s;
-
-            measures = setSorting(measures);
-            return measures.AsNoTracking();
-        }
+        protected internal override Measure toDomainObject(MeasureData d) => new Measure(d);
     }
 }
