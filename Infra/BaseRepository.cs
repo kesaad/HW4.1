@@ -12,7 +12,7 @@ namespace Abc.Infra
         where TData : PeriodData, new() where TDomain : Entity<TData>, new()
     {
         protected internal DbContext db;
-        protected DbSet<TData> dbSet;
+        protected internal DbSet<TData> dbSet;
 
         protected BaseRepository(DbContext c, DbSet<TData> s)
         {
