@@ -18,6 +18,7 @@
     <Folder Include="Data\Quantity\" />
     <Folder Include="Data\Common\" />
     <Folder Include="Docs\" />
+    <Folder Include="Infra\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Abc.Data.csproj" />

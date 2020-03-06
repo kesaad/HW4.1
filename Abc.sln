@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Time recording log", "Time 
 		..\..\..\Desktop\Time recording log.xlsx = ..\..\..\Desktop\Time recording log.xlsx
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C659FD58-9162-465C-AC50-61480012682A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abc.Tests", "Tests\Abc.Tests.csproj", "{C659FD58-9162-465C-AC50-61480012682A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abc.Aids", "Aids\Abc.Aids.csproj", "{925D4FFB-5543-4D8F-B179-42D353A3C6FB}"
 EndProject
